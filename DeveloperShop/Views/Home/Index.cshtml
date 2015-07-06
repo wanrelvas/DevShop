@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Dev Shop</title>
+
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../Content/index-theme.css" rel="stylesheet" />
+
+</head>
+<body role="document">
+
+    <div class="container theme-showcase" id="DevShopStore" role="main">
+
+        <div class="jumbotron">
+            <h1>Dev Shop</h1>
+        </div>
+
+        <div id="StoreBuyingMode">
+            <div id="StoreHeader">
+                <div class="page-header">
+                    <h2>Add a developer  </h2>
+                </div>
+
+            </div>
+
+            <div id="StoreCatalogTable">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="text" id="catalogTableUsername" placeholder="GitHub Username" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="number" id="catalogTablePrice" placeholder="$ Price per hour" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="number" id="catalogTableHours" placeholder="# Hours" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <button type="button" class="form-control btn btn-success" id="addDevloperBtn">Add</button>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <div id="StoreShoppingCart">
+                <div class="page-header">
+                    <h2>Cart </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <table id="StoreShoppingCartTable" class="table">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Username
+                                    </td>
+                                    <td>
+                                        Price
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td class="totalPrice"></td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-lg btn-block btn-success" id="finishOrder">Finish Order</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/ShoppingCart/Index.js"></script>
+
+</body>
+</html>
