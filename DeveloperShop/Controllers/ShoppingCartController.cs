@@ -12,10 +12,12 @@ namespace DeveloperShop.Controllers
     public class ShoppingCartController : ApiController
     {
         IShoppingCartRepository ShoppingCartRepository;
+        ShoppingCartDeveloperService ShoppingCartService;
 
         public ShoppingCartController()
         {
             ShoppingCartRepository = new ShoppingCartRepository();
+            ShoppingCartService = new ShoppingCartDeveloperService();
         }
 
         public ShoppingCartController(IShoppingCartRepository shoppingCartRepository)
@@ -26,6 +28,19 @@ namespace DeveloperShop.Controllers
         public ShoppingCart Get()
         {
             return ShoppingCartRepository.GetCurrentShoppingCart();
+        }
+
+        [HttpGet]
+        public ShoppingCartDeveloper GetDevloperPrice(string id)
+        {
+            try
+            {
+                return ShoppingCartService.GeDeveloperDetails(id);
+            }
+            catch (Exception ex)
+            {                
+                 return null;
+            } 
         }
 
         public HttpResponseMessage Post(ShoppingCartDeveloper developer)
@@ -40,7 +55,6 @@ namespace DeveloperShop.Controllers
             }
 
             return Request.CreateResponse<ShoppingCartDeveloper>(System.Net.HttpStatusCode.Created, developer);
-           
           
         }
 

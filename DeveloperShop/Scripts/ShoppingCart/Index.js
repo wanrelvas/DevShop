@@ -135,7 +135,7 @@ function RemoveCartItem(button) {
             }
         },
         error: function (data) {
-            error = "<div class=\"col-lg-6 alert alert-danger\" role=\"alert\"> <strong>Developer was not found on server.</strong>" +  data.responseText + "</div>";
+            error = "<div class=\"col-lg-6 alert alert-danger\" role=\"alert\"> <strong>Developer was not found on server.</strong></div>";
             $('#StoreCatalogTable > .row > div:last').after(error);           
         }
     });
@@ -161,15 +161,33 @@ function FinishOrder() {
        
 }
 
-   
 
+function LoadDeveloperPrice() {
 
+    var username = $("#catalogTableUsername").val();
+
+    $.getJSON('/api/ShoppingCart/' + username,
+        function (shoppingCartDeveloper) {
+            if (shoppingCartDeveloper != null) {
+                var devPrice = shoppingCartDeveloper.Price;
+                $("#catalogTablePrice").val(devPrice);
+            }
+            else {
+                error = "<div class=\"col-lg-6 alert alert-danger\" role=\"alert\"> <strong>Developer was not found on server.</strong> The developer was not found on GitHub. Try another username to contiue.</div>";
+                $('#StoreCatalogTable > .row > div:last').after(error);
+            }
+
+            
+          });
+
+}
 
 
 //Handlers
 $(document).ready(function () {
 
-    $( "#finishOrder").prop( "disabled", true );
+    $("#finishOrder").prop("disabled", true);
+    $("#catalogTablePrice").prop("disabled", true);
 
     LoadCartTable();
 
@@ -181,8 +199,12 @@ $(document).ready(function () {
         FinishOrder();
     });
 
-    $("#catalogTableUsername").change(function () {
+    $("#catalogTableUsername").focus(function () {
         $("div[role='alert']").remove();
+    });
+
+    $("#catalogTableUsername").focusout(function () {
+        LoadDeveloperPrice();
     });
 });
 
